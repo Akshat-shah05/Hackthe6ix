@@ -16,3 +16,18 @@
   .pulse-animation {
     animation: pulse 1.5s infinite;
   }
+
+  @keyframes expand {
+    0% {
+      height: 40%; /* Adjust based on initial height */
+      top: 60%; /* Adjust based on initial position */
+    }
+    100% {
+      height: 100%;
+      top: 0;
+    }
+  }
+  
+  .expand-animation {
+    animation: expand 0.5s forwards;
+  }
