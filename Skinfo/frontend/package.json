@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@zxing/library": "^0.21.2",
+    "d3": "^7.9.0",
     "dynamsoft-javascript-barcode": "^9.6.42",
     "next": "14.2.5",
     "quagga": "^0.12.1",
     "react": "^18.3.1",
     "react-barcode-qrcode-scanner": "^0.1.3",
     "react-dom": "^18",
+    "react-gauge-component": "^1.2.21",
     "scanbot-web-sdk": "^5.1.1"
   },
   "devDependencies": {
