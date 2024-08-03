@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Load the CSV file
-df = pd.read_csv('your_dataset.csv')
+df = pd.read_csv('skincare_products.csv')
 
 # Convert to JSON format
 data = df.to_dict(orient='records')
