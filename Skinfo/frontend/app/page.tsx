@@ -21,7 +21,6 @@ const HomePage = () => {
   
   return (
     <main className="w-screen h-screen bg-custom-gradient">
-      <ParticlesBackground />
       <div className={`fixed bottom-0 left-0 right-0 bg-white bg-opacity-30 p-4 rounded-t-3xl shadow-lg flex flex-col items-center h-2/5 ${
           isAnimating ? 'expand-animation' : ''}`}
       >
