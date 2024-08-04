@@ -2,37 +2,50 @@
 import RadarChart from '@/components/RadarChart';
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import image from './dryskin.png'
+import ListItem from './ListItem';
+import GaugeGraph from './GaugeGraph';
+import image from './skinfocare.png'
+import { useRouter } from 'next/navigation';
 
 interface UserProfileProps {
   results: { [key: string]: string[] };
 }
 
 const UserProfile: React.FC<UserProfileProps> = ({ results }) => {
-  useEffect(() => {
-    console.log(results);
-  }, [results]);
+    const router = useRouter();
+  console.log(results)
+  const labels = ["Moisturizer", "Face Wash / Cleanser", "Serums", "Toners", "Sunscreen", "Physical Exfoliants", "Chemical Exfoliants"]
+
+  const handleClick = () => {
+    router.push('/ScanningPage')
+  }
 
   return (
-    <div className="w-screen h-full bg-custom-gradient-2 overflow-y-hidden overflow-x-hidden overflow-auto">
-      <div className="w-screen h-full grid grid-cols-2 grid-rows-2 gap-8 p-4 bg-custom-gradient-2 pt-8 pb-20">
+    <div className="text-white flex flex-col items-center w-screen h-full bg-custom-gradient-2 overflow-x-hidden overflow-auto">
+      <h1 className="mt-6 text-4xl flex flex-row justify-center"> About You </h1>
+      <div className="w-screen h-full grid grid-cols-2 grid-rows-2 gap-8 p-4 bg-custom-gradient-2 pt-8 pb-8">
         <div className="border border-white bg-transparent flex flex-col items-center rounded rounded-lg">
-          <h1 className="text-3xl mt-4 mb-8"> Skin Type </h1>
-          <Image src={image} alt="Description" width={250} height={250} />
+          <h1 className="text-3xl mt-4"> Skin Type - {results["3"]} </h1>
+          <Image src={image} alt="alt" width={300} height={300}/>
         </div>
         <div className="border border-white bg-transparent flex flex-col items-center rounded rounded-lg">
-          <h1 className="text-3xl mt-4 mb-8"> Primary Skin Concerns </h1>
-          <div className="w-100 h-100">
+          <h1 className="text-3xl mt-2"> Primary Skin Concerns </h1>
+          <div className="w-80 h-80">
             <RadarChart results={results["4"]} />
           </div>
         </div>
-        <div className="border border-white bg-transparent flex flex-row justify-center rounded rounded-lg">
-          <h1 className="text-3xl mt-4"> Current Products Used </h1>
+        <div className="border border-white bg-transparent flex flex-col items-center rounded rounded-lg">
+          <h1 className="text-3xl mt-4 mb-2"> Current Products Used </h1>
+          {labels.map((label, index) => {
+            return <ListItem key={index} included={results[5].includes(label) ? true : false} label={label}/>
+          })}
         </div>
-        <div className="border border-white bg-transparent flex flex-row justify-center rounded rounded-lg">
+        <div className="border border-white bg-transparent flex flex-col items-center rounded rounded-lg">
           <h1 className="text-3xl mt-4"> Sun Exposure </h1>
+          <div className="pulse-animation w-full h-full items-center flex flex-row justify-center"><GaugeGraph /></div>
         </div>
       </div>
+      <button className="flex flex-row bg-teal-900 p-4 rounded-3xl shadow-lg justify-center w-1/2 mb-4" onClick={handleClick}> Scan the products you currently use to get personalized suggestions! </button>
     </div>
   );
 };

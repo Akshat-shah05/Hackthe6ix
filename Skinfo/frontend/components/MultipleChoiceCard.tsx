@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-//import { Option } from '@/types/types'; no need to push
 import { Option } from '../../frontend/types/types';
 
 interface MultipleChoiceCardProps {
@@ -8,27 +7,28 @@ interface MultipleChoiceCardProps {
   options: Option[];
   multiSelect: boolean;
   onSelect: (selectedIds: string[]) => void;
+  selectedOptions: string[]; // Add selectedOptions prop
 }
 
-const MultipleChoiceCard: React.FC<MultipleChoiceCardProps> = ({ questionText, options, multiSelect, onSelect }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  useEffect(() => {
-    onSelect(selectedOptions);
-  }, [selectedOptions, onSelect]);
+const MultipleChoiceCard: React.FC<MultipleChoiceCardProps> = ({ questionText, options, multiSelect, onSelect, selectedOptions }) => {
+  const [localSelectedOptions, setLocalSelectedOptions] = useState<string[]>(selectedOptions);
 
   const handleOptionChange = (optionId: string) => {
     if (multiSelect) {
-      setSelectedOptions((prevSelected) => {
-        const newSelection = prevSelected.includes(optionId)
-          ? prevSelected.filter(id => id !== optionId)
-          : [...prevSelected, optionId];
-        return newSelection;
-      });
+      const newSelection = localSelectedOptions.includes(optionId)
+        ? localSelectedOptions.filter(id => id !== optionId)
+        : [...localSelectedOptions, optionId];
+      setLocalSelectedOptions(newSelection);
+      onSelect(newSelection); // Call onSelect directly
     } else {
-      setSelectedOptions([optionId]);
+      setLocalSelectedOptions([optionId]);
+      onSelect([optionId]); // Call onSelect directly
     }
   };
+
+  useEffect(() => {
+    setLocalSelectedOptions(selectedOptions);
+  }, [selectedOptions]);
 
   return (
     <div className="card p-4 border rounded-lg shadow-md">
@@ -38,7 +38,7 @@ const MultipleChoiceCard: React.FC<MultipleChoiceCardProps> = ({ questionText, o
           <div
             key={option.id}
             className={`option p-2 mb-2 border rounded cursor-pointer ${
-              selectedOptions.includes(option.id) ? 'text-white border-black' : 'bg-transparent'
+              localSelectedOptions.includes(option.id) ? 'text-white border-black' : 'bg-transparent'
             }`}
             onClick={() => handleOptionChange(option.id)}
           >

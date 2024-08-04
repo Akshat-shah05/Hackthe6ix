@@ -17,7 +17,7 @@ import UserProfile from "@/components/UserProfile";
 const questions: Question[] = [
   {
     id: '1',
-    text: 'Age',
+    text: 'What is your Age',
     options: [
       { id: '0-17', label: '0-17' },
       { id: '18-30', label: '18-30' },
@@ -28,7 +28,7 @@ const questions: Question[] = [
   },
   {
     id: '2',
-    text: 'Sex',
+    text: 'What is your birth-assigned Sex',
     options: [
       { id: 'Male', label: 'Male' },
       { id: 'Female', label: 'Female' },
