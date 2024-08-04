@@ -1,0 +1,7 @@
+fastapi[standard]
+pymongo[srv]
+openai
+fastapi_cors
+python-dotenv
+pydantic
+dotenv
