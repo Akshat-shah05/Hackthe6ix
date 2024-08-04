@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import RadarChart from "@/components/RadarChart";
 import GridComponent from "../UserProfile/page";
 import UserProfile from "@/components/UserProfile";
+import React from "react";
 
 const questions: Question[] = [
   {
