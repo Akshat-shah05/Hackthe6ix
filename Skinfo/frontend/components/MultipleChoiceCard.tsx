@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { Option } from '@/types/types';
+//import { Option } from '@/types/types'; no need to push
+import { Option } from '../../frontend/types/types';
 
 interface MultipleChoiceCardProps {
   questionText: string;

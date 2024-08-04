@@ -1,8 +1,13 @@
 // src/pages/SkinCare.tsx
 'use client'
 
-import Quiz from "@/components/Quiz";
-import { Option, Question } from "@/types/types";
+//import Quiz from "@/components/Quiz";
+import Quiz from "../../components/Quiz";
+
+
+// import { Option, Question } from "@/types/types";
+import { Option, Question } from "../../types/types";
+
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import RadarChart from "@/components/RadarChart";
