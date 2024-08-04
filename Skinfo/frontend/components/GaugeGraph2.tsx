@@ -25,6 +25,8 @@ const GaugeGraph2: React.FC = () => {
       }
         pointer={{ type: "blob", animationDelay: 0 }}
         value={2.06/3 * 100}
+        width={50}
+        height={50}
       />
     </div>
   );

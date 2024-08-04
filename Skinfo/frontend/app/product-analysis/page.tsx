@@ -4,7 +4,7 @@ import IngredientsList from "@/components/IngredientList";
 
 const Home: React.FC = () => {
   return (
-    <div className="h-screen bg-custom-gradient-2">
+    <div className="w-screen h-screen bg-custom-gradient-2 overflow-x-hidden">
       <IngredientsList />
     </div>
   );

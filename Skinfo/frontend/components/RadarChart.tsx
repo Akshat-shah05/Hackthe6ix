@@ -27,11 +27,11 @@ const RadarChart: React.FC<RadarChartProps> = ({ results }) => {
     datasets: [
       {
         data: data,
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        borderColor: 'white',
+        backgroundColor: 'rgba(0, 121, 107, 0.2)',
+        borderColor: 'rgba(0, 121, 107, 1)',
         borderWidth: 1,
-        pointBackgroundColor: 'white',
-        pointBorderColor: 'white',
+        pointBackgroundColor: 'rgb(0, 121, 107)',
+        pointBorderColor: 'rgb(0, 121, 107)',
       },
     ],
   });
@@ -41,13 +41,13 @@ const RadarChart: React.FC<RadarChartProps> = ({ results }) => {
     scales: {
       r: {
         angleLines: {
-          color: 'white',
+          color: 'rgb(0, 121, 107)',
         },
         grid: {
-          color: 'white',
+          color: 'rgb(0, 121, 107)',
         },
         pointLabels: {
-          color: 'white',
+          color: 'rgb(0, 121, 107)',
         },
         ticks: {
           display: false,

@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full bg-white bg-opacity-70 shadow-md rounded-lg p-4">
+    <nav className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-1/2 bg-white bg-opacity-70 shadow-md rounded-xl p-4">
       <ul className="flex justify-around">
         {routes.map((route) => (
           <li
