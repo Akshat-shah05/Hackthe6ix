@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import BarcodeScanner from '../../components/Scanner';
+import NavBar from '../../components/NavBar';
 
 const ScanningPage: React.FC = () => {
   const handleDetected = (result: string) => {
@@ -11,7 +12,9 @@ const ScanningPage: React.FC = () => {
     <div>
       <h1>Barcode Scanner</h1>
       <BarcodeScanner onDetected={handleDetected} />
+      <NavBar/>
     </div>
+    
   );
 };
 
