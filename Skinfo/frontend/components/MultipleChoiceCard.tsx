@@ -38,7 +38,7 @@ const MultipleChoiceCard: React.FC<MultipleChoiceCardProps> = ({ questionText, o
           <div
             key={option.id}
             className={`option p-2 mb-2 border rounded cursor-pointer ${
-              selectedOptions.includes(option.id) ? 'text-white border-black' : 'bg-transparent'
+              selectedOptions.includes(option.id) ? 'text-white bg-teal-700 border-teal-700' : 'bg-transparent'
             }`}
             onClick={() => handleOptionChange(option.id)}
           >
