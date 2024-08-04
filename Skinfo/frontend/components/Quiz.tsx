@@ -1,14 +1,15 @@
-// src/components/Quiz.tsx
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MultipleChoiceCard from './MultipleChoiceCard';
 import { Question } from '@/types/types';
-import { useRouter } from 'next/navigation';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import UserProfile from '@/components/UserProfile';
+import NavBar from './NavBar';
 
 interface QuizProps {
   questions: Question[];
-  setResult: any;
-  setComplete: any;
+  setResult: (results: Result[]) => void;
+  setComplete: (complete: boolean) => void;
 }
 
 interface Result {
@@ -17,59 +18,56 @@ interface Result {
 }
 
 const Quiz: React.FC<QuizProps> = ({ questions, setResult, setComplete }) => {
+  const { user, error, isLoading } = useUser();
+  console.log(user?.sid);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [results, setResults] = useState<Result[]>([]);
+  const [results, setResults] = useState<{ [key: string]: string[] }>({});
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const router = useRouter();
+
+  useEffect(() => {
+    if (currentQuestionIndex === questions.length) {
+      setResult(Object.entries(results).map(([questionId, selectedOptions]) => ({ questionId, selectedOptions })));
+      setComplete(true);
+    }
+  }, [currentQuestionIndex, questions.length, results, setComplete, setResult]);
+
+  useEffect(() => {
+    // Reset the selected options when the current question index changes
+    setSelectedOptions(results[questions[currentQuestionIndex]?.id] || []);
+  }, [currentQuestionIndex, results, questions]);
 
   const handleOptionSelect = (newSelectedIds: string[]) => {
     setSelectedOptions(newSelectedIds);
-    console.log(newSelectedIds)
   };
 
   const handleNext = () => {
     // Save the selected options for the current question
-    setResults((prevResults) => {
-      const updatedResults = [...prevResults];
-      updatedResults[currentQuestionIndex] = {
-        questionId: questions[currentQuestionIndex].id,
-        selectedOptions: selectedOptions,
-      };
-      return updatedResults;
-    });
+    const updatedResults = { ...results, [questions[currentQuestionIndex].id]: selectedOptions };
+    setResults(updatedResults);
 
     if (currentQuestionIndex < questions.length - 1) {
       // Move to the next question
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      // Clear the selected options for the next question
-      setSelectedOptions([]);
     } else {
-      // Navigate to /Scan on completion
-      const updatedResults = [...results];
-      updatedResults[currentQuestionIndex] = {
-        questionId: questions[currentQuestionIndex].id,
-        selectedOptions: selectedOptions,
-      };
-      setResult(updatedResults)
-      setComplete(true)
-      //router.push('/Scan');
+      // On completion, trigger the useEffect to finalize results
+      console.log(updatedResults);
+      setCurrentQuestionIndex(questions.length);
     }
   };
 
   const handlePrevious = () => {
     // Move to the previous question
-    setCurrentQuestionIndex((prevIndex) => {
-      const newIndex = prevIndex - 1;
-      return newIndex >= 0 ? newIndex : 0;
-    });
+    setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="p-4 w-1/3">
-      {currentQuestion ? (
+    <>
+      {currentQuestionIndex < questions.length ? (
         <>
+        <div className="p-4 w-1/3">
           <MultipleChoiceCard
             questionText={currentQuestion.text}
             options={currentQuestion.options}
@@ -96,14 +94,17 @@ const Quiz: React.FC<QuizProps> = ({ questions, setResult, setComplete }) => {
               {currentQuestionIndex === questions.length - 1 ? 'Complete' : 'Next'}
             </button>
           </div>
+          </div>
         </>
       ) : (
-        <div className="text-lg font-semibold">
-          Quiz Completed! Here are your results:
-          <pre>{JSON.stringify(results, null, 2)}</pre>
+        <div className="h-screen w-screen flex flex-row justify-center overflow-hidden">
+          <div className="flex flex-col">
+            <UserProfile results={results} />
+            <NavBar />
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
