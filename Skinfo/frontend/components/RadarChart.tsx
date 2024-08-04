@@ -17,6 +17,8 @@ const RadarChart: React.FC<RadarChartProps> = ({ results }) => {
   results.forEach((result: string) => {
     if (labels.includes(result)) {
       data.push(Math.random() * 10 + 40);
+    } else {
+      data.push(0)
     }
   });
 

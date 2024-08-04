@@ -4,7 +4,8 @@ import MultipleChoiceCard from './MultipleChoiceCard';
 import { Question } from '@/types/types';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import UserProfile from '@/components/UserProfile';
-import NavBar from './NavBar';
+import logoImage from './skinfocare_3.png'
+import Image from 'next/image';
 
 interface QuizProps {
   questions: Question[];
@@ -67,12 +68,16 @@ const Quiz: React.FC<QuizProps> = ({ questions, setResult, setComplete }) => {
     <>
       {currentQuestionIndex < questions.length ? (
         <>
+        <div className="absolute top-0 left-0">
+        <Image src={logoImage} alt="Logo" width={200} height={200} /> {/* Adjust size as needed */}
+        </div>
         <div className="p-4 w-1/3">
           <MultipleChoiceCard
             questionText={currentQuestion.text}
             options={currentQuestion.options}
             multiSelect={currentQuestion.multiSelect}
             onSelect={handleOptionSelect}
+            selectedOptions={selectedOptions} // Pass the selectedOptions state
           />
           <div className="flex justify-between mt-4">
             <button
@@ -100,7 +105,7 @@ const Quiz: React.FC<QuizProps> = ({ questions, setResult, setComplete }) => {
         <div className="h-screen w-screen flex flex-row justify-center overflow-hidden">
           <div className="flex flex-col">
             <UserProfile results={results} />
-            <NavBar />
+            {/*<NavBar />*/}
           </div>
         </div>
       )}

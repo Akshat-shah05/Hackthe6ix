@@ -28,6 +28,7 @@
     "react-gauge-component": "^1.2.21",
     "react-tsparticles": "^2.12.2",
     "scanbot-web-sdk": "^5.1.1",
+    "swiper": "^11.1.9",
     "three": "^0.167.1"
   },
   "devDependencies": {

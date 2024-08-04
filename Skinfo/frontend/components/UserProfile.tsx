@@ -6,6 +6,7 @@ import ListItem from './ListItem';
 import GaugeGraph from './GaugeGraph';
 import image from './skinfocare.png'
 import { useRouter } from 'next/navigation';
+import NavBar from './NavBar';
 
 interface UserProfileProps {
   results: { [key: string]: string[] };
@@ -23,7 +24,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ results }) => {
   return (
     <div className="text-white flex flex-col items-center w-screen h-full bg-custom-gradient-2 overflow-x-hidden overflow-auto">
       <h1 className="mt-6 text-4xl flex flex-row justify-center"> About You </h1>
-      <div className="w-screen h-full grid grid-cols-2 grid-rows-2 gap-8 p-4 bg-custom-gradient-2 pt-8 pb-8">
+      <div className="w-screen h-full grid grid-cols-2 grid-rows-2 gap-8 p-4 bg-custom-gradient-2 pt-8 pb-32">
         <div className="border border-white bg-transparent flex flex-col items-center rounded rounded-lg">
           <h1 className="text-3xl mt-4"> Skin Type - {results["3"]} </h1>
           <Image src={image} alt="alt" width={300} height={300}/>
@@ -45,7 +46,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ results }) => {
           <div className="pulse-animation w-full h-full items-center flex flex-row justify-center"><GaugeGraph /></div>
         </div>
       </div>
-      <button className="flex flex-row bg-teal-900 p-4 rounded-3xl shadow-lg justify-center w-1/2 mb-4" onClick={handleClick}> Scan the products you currently use to get personalized suggestions! </button>
+      {/*<button className="flex flex-row bg-teal-900 p-4 rounded-3xl shadow-lg justify-center w-1/2 mb-4" onClick={handleClick}> Scan the products you currently use to get personalized suggestions! </button>*/}
+      <NavBar />
     </div>
   );
 };

@@ -1,0 +1,66 @@
+{
+    "ingredient_scores": {
+        "Aqua": {
+            "score": 1,
+            "response": "1"
+        },
+        "Glycerin": {
+            "score": 3,
+            "response": "I would rate Glycerin as a 3 for this user. Glycerin is a good ingredient for oily skin as it helps to attract and retain moisture without clogging pores. It can also help to improve the appearance of wrinkles, hyperpigmentation, dryness, and large pores. Additionally, with high sun exposure, Glycerin can help to keep the skin hydrated and protected."
+        },
+        "Isopropyl palmitate": {
+            "score": 1,
+            "response": "1"
+        },
+        "Cetearyl alcohol": {
+            "score": 2,
+            "response": "I would rate Cetearyl alcohol a 2 for this user. While Cetearyl alcohol is generally considered safe for most skin types, it can potentially worsen oily skin and clog pores for some individuals. Given that the user has oily skin and large pores as primary concerns, it may be best to avoid products with this ingredient to prevent potential breakouts."
+        },
+        "Ceteareth-20": {
+            "score": 1,
+            "response": "I would rate 'Ceteareth-20' as a 1 for this user. This ingredient may not be suitable for someone with oily skin and concerns about large pores and dryness as it can potentially exacerbate these issues. It is important for this user to be cautious with ingredients that can potentially clog pores or strip the skin of its natural oils."
+        },
+        "Panthenol": {
+            "score": 3,
+            "response": "I would rate Panthenol as a 3 for this user. Panthenol is a beneficial ingredient for oily skin as it helps to moisturize and hydrate without adding excess oil. It can also help improve the appearance of wrinkles, hyperpigmentation, and dryness, which are primary skin concerns for this user. Additionally, Panthenol can help to soothe and reduce inflammation in the skin, making it a great choice for someone with oily skin and high sun exposure."
+        },
+        "Niacinamide": {
+            "score": 3,
+            "response": "I would rate Niacinamide as a 3 for this user. Niacinamide is a beneficial ingredient for oily skin as it helps regulate sebum production, improve the appearance of pores, and reduce hyperpigmentation. It can also help improve the overall health and appearance of the skin, making it suitable for someone with multiple skin concerns like wrinkles, hyperpigmentation, and large pores. Additionally, its anti-aging properties can benefit this user who is in the 0-17 age group."
+        },
+        "Tocopheryl acetate": {
+            "score": 3,
+            "response": "I would rate Tocopheryl acetate as a 3 for this user. Tocopheryl acetate is a form of Vitamin E that can help with wrinkles, hyperpigmentation, and dryness, which are primary skin concerns for this user. It also provides antioxidant protection which can be beneficial for oily skin and exposure to high sun exposure."
+        },
+        "Dimethicone": {
+            "score": 1,
+            "response": "1"
+        },
+        "Persea gratissima (avocado) oil": {
+            "score": 3,
+            "response": "I would rate Persea gratissima (avocado) oil a 3 for this user. Avocado oil is beneficial for oily skin as it is lightweight and non-comedogenic, meaning it won't clog pores. It can also help with dryness and provide hydration without making the skin feel greasy. Additionally, avocado oil contains antioxidants that can help with hyperpigmentation and wrinkles. It would be a good addition to this user's skincare routine."
+        },
+        "Helianthus annuus (sunflower) seed oil": {
+            "score": 2,
+            "response": "Based on the user information provided, 'Helianthus annuus (sunflower) seed oil' would be rated as a 2 (neutral) for this user. Sunflower seed oil is generally non-comedogenic and can help balance oil production in the skin. However, since the user has oily skin as one of their primary concerns, they may want to be cautious with using an oil-based product."
+        },
+        "Glyceryl stearate": {
+            "score": 2,
+            "response": "I would rate Glyceryl stearate as a 2 for this user. It is a commonly used ingredient in skincare products as an emollient and emulsifier. It can help with moisturizing the skin and reducing dryness, which are concerns for this user. However, since the user has oily skin, Glyceryl stearate may be slightly comedogenic for some individuals with oily skin, hence the rating of 2. It is always recommended to do a patch test before incorporating any new ingredient into your skincare routine."
+        },
+        "Sodium benzoate": {
+            "score": 2,
+            "response": "I would rate Sodium benzoate as a 2 for this user. While Sodium benzoate is commonly used as a preservative in skincare products, it can sometimes cause irritation or dryness, which may not be ideal for someone with oily skin and multiple skin concerns. It is always recommended to do a patch test or consult with a dermatologist before using products containing this ingredient."
+        },
+        "Benzyl alcohol": {
+            "score": 1,
+            "response": "1"
+        },
+        "Citric acid": {
+            "score": 2,
+            "response": "I would rate Citric acid as a 2 for this user. Citric acid can help with exfoliation and brightening effects, which may be beneficial for someone with oily skin, wrinkles, and hyperpigmentation. However, it can also be drying for some people, which may not be ideal for someone with dryness as one of their primary skin concerns. So, overall it could be a helpful ingredient, but caution should be taken due to the potential for dryness."
+        }
+    },
+    "average_score": 2.0,
+    "recommendations": []
+}
