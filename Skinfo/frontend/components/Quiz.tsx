@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 
 interface QuizProps {
   questions: Question[];
+  setResult: any;
+  setComplete: any;
 }
 
 interface Result {
@@ -14,7 +16,7 @@ interface Result {
   selectedOptions: string[];
 }
 
-const Quiz: React.FC<QuizProps> = ({ questions }) => {
+const Quiz: React.FC<QuizProps> = ({ questions, setResult, setComplete }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [results, setResults] = useState<Result[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -43,7 +45,13 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
       setSelectedOptions([]);
     } else {
       // Navigate to /Scan on completion
-      console.log(results)
+      const updatedResults = [...results];
+      updatedResults[currentQuestionIndex] = {
+        questionId: questions[currentQuestionIndex].id,
+        selectedOptions: selectedOptions,
+      };
+      setResult(updatedResults)
+      setComplete(true)
       //router.push('/Scan');
     }
   };

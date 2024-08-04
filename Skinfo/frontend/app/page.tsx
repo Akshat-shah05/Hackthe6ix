@@ -1,26 +1,35 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './animations.css';
 import { useRouter } from 'next/navigation';
-import SketchfabEmbed from '@/components/3dIntroModel';
-import IntroModel from '@/components/3dIntroModel';
-import mypng from './pngskincare.png' 
-import Image from 'next/image';
-import ParticlesBackground from '@/components/Particles';
+import { useUser } from '@auth0/nextjs-auth0/client';
+
 
 const HomePage = () => {
+  const {user, error, isLoading} = useUser()
   const [isAnimating, setIsAnimating] = useState(false);
   const router = useRouter();
 
   const handleClick = () => {
     setIsAnimating(true);
     setTimeout(() => {
-      router.push('/SkinQuiz'); // Adjust the route as needed
-    }, 450); // Duration matches the CSS animation duration
+      router.push('/api/auth/login'); // Adjust the route as needed
+    }, 550); // Duration matches the CSS animation duration
   };
+
+  const Logout = () => {
+    router.push('/api/auth/logout')
+  }
+
+  useEffect(() => {
+    if (user) {
+      router.push('/SkinQuiz')
+    }
+  })
   
   return (
-    <main className="w-screen h-screen bg-custom-gradient">
+    <main className="w-screen h-screen bg-custom-gradient-2">
+      <button onClick={Logout}> Logout</button>
       <div className={`fixed bottom-0 left-0 right-0 bg-white bg-opacity-30 p-4 rounded-t-3xl shadow-lg flex flex-col items-center h-2/5 ${
           isAnimating ? 'expand-animation' : ''}`}
       >
@@ -37,6 +46,7 @@ const HomePage = () => {
         </div>
       </div>
     </main>
+
   )
 }
 
