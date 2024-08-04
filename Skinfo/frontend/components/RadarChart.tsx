@@ -5,12 +5,26 @@ import { Radar } from 'react-chartjs-2';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
-const RadarChart = () => {
+interface RadarChartProps {
+  results: string[];
+}
+
+const RadarChart: React.FC<RadarChartProps> = ({ results }) => {
+  const labels = ['Acne', 'Rosacea', 'Wrinkles', 'Hyperpigmentation', 'Dryness', 'Large Pores'];
+  const data: number[] = [];
+  console.log(results);
+
+  results.forEach((result: string) => {
+    if (labels.includes(result)) {
+      data.push(Math.random() * 10 + 40);
+    }
+  });
+
   const [chartData, setChartData] = useState({
-    labels: ['Acne', 'Rosacea', 'Wrinkles', 'Hyperpigmentation', 'Dryness', 'Large Pores'],
+    labels: labels,
     datasets: [
       {
-        data: [0, 0, 0, 0, 0, 0],
+        data: data,
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         borderColor: 'white',
         borderWidth: 1,
@@ -20,45 +34,34 @@ const RadarChart = () => {
     ],
   });
 
-  useEffect(() => {
-    const newData = [20, 20, 20, 20, 20, 20];
-    setChartData(prevState => ({
-      ...prevState,
-      datasets: [{
-        ...prevState.datasets[0],
-        data: newData,
-      }],
-    }));
-  }, []);
-
   const options = {
     responsive: true,
     scales: {
       r: {
         angleLines: {
-          color: 'white'
+          color: 'white',
         },
         grid: {
-          color: 'white'
+          color: 'white',
         },
         pointLabels: {
-          color: 'white'
+          color: 'white',
         },
         ticks: {
           display: false,
           stepSize: 20,
           max: 50,
-          count: 3  // This will give you ticks at 0, 20, 40
+          count: 3, // This will give you ticks at 0, 20, 40
         },
         min: 0,
         max: 50,
-      }
+      },
     },
     plugins: {
       legend: {
-        display: false
-      }
-    }
+        display: false,
+      },
+    },
   };
 
   return <Radar data={chartData} options={options} />;
