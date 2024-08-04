@@ -9,3 +9,8 @@ export interface Option {
     options: Option[];
     multiSelect: boolean; // New field to indicate if the question is multi-select
   }
+
+  export interface Result {
+    questionId: string;
+    selectedOptions: string[];
+  }

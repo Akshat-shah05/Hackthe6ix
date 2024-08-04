@@ -2,16 +2,19 @@
 
 import Quiz from "@/components/Quiz";
 import { Option, Question } from "@/types/types";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import GridComponent from "../UserProfile/page";
 
 const questions: Question[] = [
     {
         id: '1',
         text: 'Age',
         options: [
-          { id: 'a', label: '0-17' },
-          { id: 'b', label: '18-30' },
-          { id: 'c', label: '30-50' },
-          { id: 'd', label: '50+' }
+          { id: '0-17', label: '0-17' },
+          { id: '18-30', label: '18-30' },
+          { id: '30-50', label: '30-50' },
+          { id: '50+', label: '50+' }
         ],
         multiSelect: false
       },
@@ -19,8 +22,8 @@ const questions: Question[] = [
     id: '2',
     text: 'Sex',
     options: [
-        { id: 'a', label: 'Male' },
-        { id: 'b', label: 'Female' },
+        { id: 'Male', label: 'Male' },
+        { id: 'Female', label: 'Female' },
     ],
     multiSelect: false
     },
@@ -28,9 +31,9 @@ const questions: Question[] = [
       id: '3',
       text: 'What is your skin type?',
       options: [
-        { id: 'a', label: 'Dry' },
-        { id: 'b', label: 'Combination' },
-        { id: 'c', label: 'Oily' },
+        { id: 'Dry', label: 'Dry' },
+        { id: 'Combination', label: 'Combination' },
+        { id: 'Oily', label: 'Oily' },
       ],
       multiSelect: false
     },
@@ -38,12 +41,12 @@ const questions: Question[] = [
       id: '4',
       text: 'What are your primary skin concerns?',
       options: [
-        { id: 'a', label: 'Acne' },
-        { id: 'b', label: 'Hyperpigmentation' },
-        { id: 'c', label: 'Wrinkles/Fine Lines' },
-        { id: 'd', label: 'Redness/Rosacea'},
-        { id: 'e', label: "Dryness/Dehydration"},
-        { id: 'f', label: 'Large Pores'}
+        { id: 'Acne', label: 'Acne' },
+        { id: 'Hyperpigmentation', label: 'Hyperpigmentation' },
+        { id: 'Wrinkles/Fine Lines', label: 'Wrinkles/Fine Lines' },
+        { id: 'Redness/Rosacea', label: 'Redness/Rosacea'},
+        { id: 'Dryness/Dehydration', label: "Dryness/Dehydration"},
+        { id: 'Large Pores', label: 'Large Pores'}
       ],
       multiSelect: true
     },
@@ -51,13 +54,13 @@ const questions: Question[] = [
         id: '5',
         text: 'Current Skincare Routine - Products Used',
         options: [
-          { id: 'a', label: 'Face wash / Cleanser' },
-          { id: 'b', label: 'Moisturizer' },
-          { id: 'c', label: 'Serums' },
-          { id: 'd', label: 'Toners'},
-          { id: 'e', label: "Sunscreen"},
-          { id: 'f', label: 'Physical Exfoliants'},
-          { id: 'g', label: 'Chemical Exfoliants'}
+          { id: 'Face wash / Cleanser', label: 'Face wash / Cleanser' },
+          { id: 'Moisturizer', label: 'Moisturizer' },
+          { id: 'Serums', label: 'Serums' },
+          { id: 'Toners', label: 'Toners'},
+          { id: 'Sunscreen', label: "Sunscreen"},
+          { id: 'Physical Exfoliants', label: 'Physical Exfoliants'},
+          { id: 'Chemical Exfoliants', label: 'Chemical Exfoliants'}
         ],
         multiSelect: true
       },
@@ -65,8 +68,9 @@ const questions: Question[] = [
         id: '6',
         text: 'Sun Exposure',
         options: [
-          { id: 'a', label: 'Face wash / Cleanser' },
-          { id: 'b', label: 'Moisturizer' },
+          { id: 'Mild (< 1 hour per day)', label: 'Mild (< 1 hour per day)' },
+          { id: 'Moderate (1 - 3 hours per day)', label: 'Moderate (1 - 3 hours per day)' },
+          { id: 'High (> 3 hours per day)', label: 'High (> 3 hours per day)'}
         ],
         multiSelect: false
       },
@@ -74,10 +78,22 @@ const questions: Question[] = [
   ];
 
 const SkinCare = () => {
+    const router = useRouter();
+    const [results, setResults] = useState<any[]>([])
+    const [complete, setComplete] = useState<boolean>(false)
+
+    useEffect(() => {
+        console.log(results)
+    }, [results])
+    useEffect(() => {
+        if (complete) {
+            router.push('/UserProfile')
+        }
+    })
     return (
-        <div className="flex flex-row justify-center items-center h-screen bg-custom-gradient">
-            <Quiz questions={questions} />   
-        </div>
+        (!complete ? <div className="flex flex-row justify-center items-center h-screen bg-custom-gradient-2">
+            <Quiz questions={questions} setResult={setResults} setComplete={setComplete}/>   
+        </div> : <GridComponent results={results}/>)
     )
 }
 
