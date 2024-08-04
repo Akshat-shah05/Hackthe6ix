@@ -4,7 +4,7 @@ import './animations.css';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import scanImage from '../app/Scan.png';
-
+import Image from 'next/image';
 
 const HomePage = () => {
   const {user, error, isLoading} = useUser()
@@ -30,8 +30,7 @@ const HomePage = () => {
   
   return (
     <main className="w-screen h-screen bg-teal-700">
-      <img src={scanImage} alt="Scan" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"/>
-
+      <Image src={scanImage} alt="Scan" />
 
       <button onClick={Logout} className="flex items-center justify-center p-2 bg-teal-700 hover:bg-teal-800 text-white rounded">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
