@@ -16,6 +16,7 @@ const ScanningPage: React.FC = () => {
       </div>
       <BarcodeScanner onDetected={handleDetected} />
     </div>
+    
   );
 };
 
