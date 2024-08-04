@@ -2,7 +2,8 @@
 'use client'
 import React, { useState } from 'react';
 import MultipleChoiceCard from './MultipleChoiceCard';
-import { Question } from '@/types/types';
+//import { Question } from '@/types/types';
+import { Option, Question } from '../../frontend/types/types';
 import { useRouter } from 'next/navigation';
 
 interface QuizProps {

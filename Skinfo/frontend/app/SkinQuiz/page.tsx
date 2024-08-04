@@ -1,10 +1,16 @@
 'use client'
 
-import Quiz from "@/components/Quiz";
-import { Option, Question } from "@/types/types";
+//import Quiz from "@/components/Quiz";
+import Quiz from "../../components/Quiz";
+
+
+// import { Option, Question } from "@/types/types";
+import { Option, Question } from "../../types/types";
+
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import GridComponent from "../UserProfile/page";
+import React from "react";
 
 const questions: Question[] = [
     {
@@ -91,7 +97,7 @@ const SkinCare = () => {
         }
     })
     return (
-        (!complete ? <div className="flex flex-row justify-center items-center h-screen bg-custom-gradient-2">
+        (!complete ? <div className="flex flex-row justify-center items-center h-screen bg-teal-700">
             <Quiz questions={questions} setResult={setResults} setComplete={setComplete}/>   
         </div> : <GridComponent results={results}/>)
     )
